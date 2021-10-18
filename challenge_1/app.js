@@ -1,6 +1,7 @@
 console.log('is this working?')
 
-count = 0;
+var count = 0;
+var play = 'yes';
 
 var currentGame = [
   [ , , ],
@@ -9,7 +10,7 @@ var currentGame = [
 ]
 
 var xAndO = function(box) {
-  if (document.getElementById(box).innerText === '') {
+  if (document.getElementById(box).innerText === '' && play === 'yes') {
     if (box === 'box1' || box === 'box2' || box === 'box3') {
       indexRow = 0;
     }
@@ -44,9 +45,11 @@ var checkWin = function() {
     if (currentGame[i][0] === currentGame[i][1] && currentGame[i][1] === currentGame[i][2]) {
       if (currentGame[i][0] === 1) {
         var winner = 'X';
+        play = 'no'
         alert('Winner is ' + winner);
       } else if (currentGame[i][0] === 0) {
         var winner = 'O';
+        play = 'no'
         alert('Winner is ' + winner);
       }
     }
@@ -55,9 +58,11 @@ var checkWin = function() {
     if (currentGame[0][i] === currentGame[1][i] && currentGame[1][i] === currentGame[2][i]) {
       if (currentGame[0][i] === 1) {
         var winner = 'X';
+        play = 'no'
         alert('Winner is ' + winner);
       } else if (currentGame[0][i] === 0) {
         var winner = 'O';
+        play = 'no'
         alert('Winner is ' + winner);
       }
     }
@@ -65,20 +70,24 @@ var checkWin = function() {
   if (currentGame[0][0] === currentGame[1][1] && currentGame[1][1] === currentGame[2][2]) {
     if (currentGame[0][0] === 1) {
       var winner = 'X';
+      play = 'no'
         alert('Winner is ' + winner);
     }
     if (currentGame[0][0] === 0) {
       var winner = 'O';
+      play = 'no'
         alert('Winner is ' + winner);
     }
   }
   if (currentGame[0][2] === currentGame[1][1] && currentGame[1][1] === currentGame[2][0]) {
     if (currentGame[0][2] === 1) {
       var winner = 'X';
+      play = 'no'
         alert('Winner is ' + winner);
     }
     if (currentGame[0][2] === 0) {
       var winner = 'O';
+      play = 'no'
         alert('Winner is ' + winner);
     }
   }
@@ -90,6 +99,8 @@ var reset = function() {
     document.getElementById(box).innerHTML = '';
   }
   currentGame = [[,,],[,,],[,,]]
+  play = 'yes'
+  count = 0;
 }
 
 document.getElementById("box1").addEventListener("click", () => {xAndO("box1"); checkWin(); count++;}) //callback anonymous or bind
