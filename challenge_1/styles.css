@@ -3,3 +3,8 @@ table, td {
   border-collapse: collapse;
   text-align: center;
 }
+
+td {
+  height: 50px;
+  width: 50px;
+}
